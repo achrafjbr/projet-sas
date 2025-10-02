@@ -243,7 +243,7 @@ function sortBookASCOrDESCByTitle() {
     if (sorting == 1) {
       //  ascending
       console.log("Ascending:");
-      objs.sort( compareTitleAscending );
+      booksArray.sort( compareTitleAscending );
     } else if (sorting == 2) {
       // descending
       console.log("\nDescending:");
@@ -251,7 +251,7 @@ function sortBookASCOrDESCByTitle() {
     }
   }
 
-  console.log(sortedArray);
+  console.log(booksArray);
 }
 
 function sortBookByPublicationYear() {
@@ -465,21 +465,21 @@ function bookReturnedAndDeleteTheBorrow(bookISBN, borrowersId) {
   }
 }
 
+// These function sorting the books asc or desc.
 function compareTitleAscending( a, b ) {
-  if ( a.last_nom < b.last_nom ){
+  if ( a.titre < b.titre ){
     return -1;
   }
-  if ( a.last_nom > b.last_nom ){
+  if ( a.titre > b.titre ){
     return 1;
   }
   return 0;
 }
-
 function compareTitleDescending( a, b ) {
-  if ( a.last_nom > b.last_nom ){
+  if ( b.titre < a.titre ){
     return -1;
   }
-  if ( a.last_nom < b.last_nom ){
+  if ( b.titre > a.titre ){
     return 1;
   }
   return 0;
