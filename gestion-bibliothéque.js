@@ -223,12 +223,12 @@ function addBooks() {
   console.log("Votre livre a été ajouté avec succée\n", bookObject);
 }
 function showAllBooks() {
-  console.log("<----------- Les Livres ----------->");
+  console.log("<----------- Les Livres ----------->\n");
   for (let index = 0; index < booksArray.length; index++) {
     let book = booksArray[index];
     console.log(book.isbn, "-> ", book);
   }
-  console.log("<---------------------------------->");
+  console.log("<---------------------------------->\n");
 }
 
 function sortBookASCOrDESCByTitle() {
@@ -237,37 +237,37 @@ function sortBookASCOrDESCByTitle() {
   );
   let sortedArray = [];
   if (sorting > 2 || sorting < 1 || isNaN(sorting)) {
-    console.log("S'il te plait entrer une choisir correct ");
+    console.log("S'il te plait entrer une choisir correct \n ");
     return;
   } else {
     if (sorting == 1) {
       //  ascending
-      console.log("Ascending:");
+      console.log("Ascending: \n");
       booksArray.sort( compareTitleAscending );
     } else if (sorting == 2) {
       // descending
-      console.log("\nDescending:");
+      console.log("Descending:\n");
       booksArray.sort(compareTitleDescending);
     }
   }
 
-  console.log(booksArray);
+  console.table(booksArray);
 }
 
 function sortBookByPublicationYear() {
   booksArray.sort((a, b) => a.annee - b.annee);
-  console.log(booksArray);
+  console.table(booksArray);
 }
 
 function showAvailableBooks() {
-  console.log("<----------- Les Livres Disponible ----------->");
+  console.log("<----------- Les Livres Disponible ----------->\n");
   for (let index = 0; index < booksArray.length; index++) {
     let book = booksArray[index];
     if (book.disponible == "oui") {
       console.log(book.id, "-> ", book);
     }
   }
-  console.log("<---------------------------------->");
+  console.log("<---------------------------------->\n");
 }
 
 function finABookByISBN() {
@@ -281,7 +281,7 @@ function finABookByISBN() {
     }
   }
   console.log(
-    "<------------Le livre que vous chercher est introuvable !--------------->"
+    "<------------Le livre que vous chercher est introuvable !--------------->\n"
   );
 }
 
@@ -300,15 +300,15 @@ function addASubscriber() {
   subscribersArray.push(subscriberObject);
   // incremenet Subscriber 'ID' when ever the user add a book.
   subscriberID++;
-  console.log("L'abonnée a été ajouté avec succée", subscriberObject);
+  console.log("L'abonnée a été ajouté avec succée", subscriberObject,"\n");
 }
 function showAllSubscriberss() {
-  console.log("<----------- Les Aboonnées ----------->");
+  console.log("<----------- Les Aboonnées ----------->\n");
   for (let index = 0; index < subscribersArray.length; index++) {
     let subscriber = subscribersArray[index];
     console.log(subscriber.id, "-> ", subscriber);
   }
-  console.log("<---------------------------------->");
+  console.log("<---------------------------------->\n");
 }
 
 // Operations about Borrowes management.
@@ -332,9 +332,9 @@ function addABorrowes() {
       };
       borrowesArray.push(borrower);
       // Show success message:
-      console.log("L'emprunt a été ajouté avec succée\n", borrower);
+      console.log("L'emprunt a été ajouté avec succée", borrower,"\n");
     } else {
-      console.log("Le livre est pas disponible maintenent !");
+      console.log("Le livre est pas disponible maintenent !\n");
     }
   } else {
     console.log(
@@ -344,7 +344,7 @@ function addABorrowes() {
 }
 
 function showAllBooksBorrowByASubscriber() {
-  console.log("Afficher les livres empruntés par un abonné donné.");
+  console.log("Afficher les livres empruntés par un abonné donné.\n");
   let emprunterId = +prompt("Entrer l'ID de l'emprunter : ");
   let isbnArray = [];
   // Looking for a books ISBN into [borrowesArray] belong to this [emprunterId]
@@ -356,28 +356,28 @@ function showAllBooksBorrowByASubscriber() {
   }
 
   if (isbnArray.length > 0) {
-    console.log("<-----------------------Les lives------------------------->");
+    console.log("<-----------------------Les lives------------------------->\n");
     for (let bookIndex = 0; bookIndex < booksArray.length; bookIndex++) {
       let book = booksArray[bookIndex];
       if (isbnArray.includes(book.isbn)) {
         console.log(book.isbn, "->", book);
       }
     }
-    console.log("<-------------------------------------------------------->");
+    console.log("<-------------------------------------------------------->\n");
   }
 }
 function addAReturnedBook() {
-  console.log("<------------------Le return de livre-------------------->");
+  console.log("<------------------Le return de livre-------------------->\n");
   let bookISBN = +prompt("Entre le ISBN de livre que vous voulez returner :");
   let borrowersId = +prompt("Entre l'ID de l'abonnée pour le supprimer :");
   if (isNaN(bookISBN) || isNaN(borrowersId)) {
-    console.log("Please entre a valide nomber");
+    console.log("Please entre a valide nomber\n");
     return;
   }
   bookReturnedAndDeleteTheBorrow(bookISBN, borrowersId);
 
   console.log(
-    "<------------------Le return été bien enregistrer-------------------->"
+    "<------------------Le return été bien enregistrer-------------------->\n"
   );
 }
 
@@ -445,7 +445,7 @@ function bookReturnedAndDeleteTheBorrow(bookISBN, borrowersId) {
   }
 
   if (isbnIsFound == false) {
-    console.log("Ce livre est introuvable !");
+    console.log("Ce livre est introuvable !\n");
     return;
   }
 
@@ -460,7 +460,7 @@ function bookReturnedAndDeleteTheBorrow(bookISBN, borrowersId) {
   }
 
   if (borrowerIsFound == false) {
-    console.log("Ce emprunter est introuvable !");
+    console.log("Ce emprunter est introuvable !\n");
     return;
   }
 }
